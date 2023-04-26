@@ -133,10 +133,10 @@
 17. npm i use-debounce
 
 # UI Dependencies 
-16. npm install sweetalert2
-17. npm i swiper
-18. npm install react-icons --save
-19. npm i react-pro-sidebar
-20. npm install -S react-useanimations
-21. npm i react-loader-spinner
-22. npm i --save react-select
+17. npm install sweetalert2
+18. npm i swiper
+19. npm install react-icons --save
+20. npm i react-pro-sidebar
+21. npm install -S react-useanimations
+22. npm i react-loader-spinner
+23. npm i --save react-select
