@@ -1,0 +1,1 @@
+export const API_BACKEND = "https://digitrade.store/my_test/src/index.php"
