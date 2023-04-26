@@ -1,0 +1,48 @@
+.Invoice{
+    h4{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .cont_block{
+        width: 100%;
+        display: flex;
+        .title{
+            display: flex;
+            align-items: center;
+            padding-top: 10px;
+            width: 100%;
+            text-align: right;
+        }
+        .price{
+            padding-top: 10px;
+            width: 100%;
+            text-align: left;
+        }
+
+        .sum{
+            font-size: 22px;
+            font-weight: 900;
+        }
+    }
+
+    .first_block{
+        padding: 15px 35px 15px 35px;
+        margin: 10px 5px 10px 5px;
+
+        border-bottom: 1px solid #f1f1f1;
+    }
+    .second_block{
+        padding: 15px 35px 15px 35px;
+        margin: 10px 5px 10px 5px;
+
+        border-bottom: 1px solid #f1f1f1;
+    }
+    .third_block{
+        padding: 15px 35px 15px 35px;
+        margin: 10px 5px 10px 5px;
+
+        border-bottom: 1px solid #f1f1f1;
+    }
+
+}

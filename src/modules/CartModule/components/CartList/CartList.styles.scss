@@ -1,0 +1,106 @@
+@import '../../../../App.scss';
+.CartList{
+    direction: rtl;
+    margin: 20px 40px 20px 40px;
+    .cart_head{
+        display: flex;
+        .title{
+            width: 100%;
+            h4{
+                font-size: 24px;
+                font-weight: 800;
+            }
+        }
+        .options{
+            width: 100%;
+            display: flex;
+            float: left;
+            justify-content: left;
+            align-items: center;
+            .btn{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                padding: 0px 10px 0px 10px;
+            }
+        }
+    }
+    .listHead{
+        text-align: right;
+    }
+
+    .list{
+        width: 100%;
+        .item_card{
+            width: 100%;
+            .content{
+                width: 100%;
+            }
+            .trash{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                svg{
+                    cursor: pointer;
+                }
+
+            }
+            .btn{
+                display: flex;
+                align-items: center;
+                width: 100%;
+                height: 100%;
+            }
+            .cart_btn{
+                width: 100%;
+                background-color: black;
+                border-radius: 30px;
+                align-items: center;
+                padding: 4px 0;
+                min-height: 30px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                .increase{
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    width: 33.3%;
+                    span{
+                        color: white;
+                    }
+                }
+                .decrease{
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    width: 33.3%;
+                    span{
+                        color: white;
+                    }
+                }
+                .quantity{
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    background-color: white;
+                    width: 33.3%;
+                    span{
+                        color: black;
+                    }
+                }
+            }
+            .img_block{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                img {
+                    width: 80%;
+                }
+            }
+            .title{
+
+            }
+        }
+    }
+}

@@ -1,0 +1,32 @@
+.Hero{
+    width: 100vw;
+    height: 60vh;
+    overflow: hidden;
+    position: relative;
+    .video-background{
+        width: 100%;
+        filter: brightness(50%);
+        object-fit: cover;
+    }
+
+    .content{
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        top: 20%;
+        .img_block{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .btn_container{
+            display: flex;
+            .btn{
+                padding: 10px;
+            }
+        }
+
+    }
+}

@@ -1,0 +1,38 @@
+@import '../../../App.scss';
+.Button2_primary{
+text-transform: initial;
+border:2px solid #fff;
+display:inline-block;
+cursor:pointer;
+border-radius:5px;
+p{
+    color:#fff;
+    margin:16px 24px;
+}
+&:hover{
+    background:#fff;
+    p{
+    color:$c1;
+    }
+}
+}
+
+.Button2_secondary{
+    background-color: $c1;
+    text-transform: initial;
+    border:2px solid $c1;
+    display:inline-block;
+    cursor:pointer;
+    border-radius:5px;
+    p{
+        color:#fff;
+        margin:16px 24px;
+    }
+    &:hover{
+        background:#f7f7f7;
+        border:2px solid #f7f7f7;
+        p{
+        color:$c1;
+        }
+    }
+}

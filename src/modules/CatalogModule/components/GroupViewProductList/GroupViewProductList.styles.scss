@@ -1,0 +1,28 @@
+@import '../../../../App.scss';
+.GroupViewProductList{
+    .head{
+        border-bottom: 3px solid black;
+    }
+    .odd{
+        background: #f3f5f9;
+    }
+    .double{
+        background: white;
+    }
+
+    .card {
+        text-align: center;
+        margin: 5px;
+        .card_content{
+            cursor: pointer;
+            img {
+                width: 80%;
+            }
+
+            .card_content_info{
+                min-height: 100px;
+            }
+        }
+
+    }
+}

@@ -1,0 +1,33 @@
+@import '../../../App.scss';
+.select-box{
+  direction: rtl;
+  position: relative;
+  cursor: pointer;
+  
+  .selected-option{
+    min-width: 50px;
+    border: 1px solid rgba(65,67,106,.21);
+    padding: 8px 15px 8px 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    img {
+      padding-right: 10px;
+      width: 10px;
+    }
+  }
+  .options{
+    width: 100%;
+    position: absolute;
+    background: #fff;
+    .option{
+      text-align: center;
+      border: 1px solid rgba(65,67,106,.21);
+      color: $c1;
+      padding: 5px 4px 5px 4px;
+      &:hover{
+        background: #f3f5f9;
+      }
+    }
+  }
+}

@@ -1,0 +1,101 @@
+@import './components/layout/Header/Header.styles.scss';
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+@import url('https://fonts.googleapis.com/css2?family=Assistant:wght@200;300;400;500;600;700;800&display=swap');
+body{
+	margin: 0;
+	padding: 0;
+	font-family: 'Assistant', sans-serif;
+	direction: rtl;
+	@apply text-base text-black bg-bg-color
+	
+
+}
+.flex-container {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	.col-lg-12 {width: 100%;}
+	.col-lg-11 {width: 91.66666667%;}
+	.col-lg-10 {width: 83.33333333%;}
+	.col-lg-9 {width: 75%;}
+	.col-lg-8 {width: 66.66666667%;}
+	.col-lg-7 {width: 58.33333333%;}
+	.col-lg-6 {width: 50%;}
+	.col-lg-5 {width: 41.66666667%;}
+	.col-lg-4 {width: 33.33333333%;}
+	.col-lg-3 {width: 25%;}
+	.col-lg-2 {width: 16.66666667%;}
+	.col-lg-1 {width: 8.33333333%;}
+}
+
+.myPadding {
+	padding: 10px;
+}
+
+.center {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.pointer {
+	cursor: pointer;
+}
+
+.relative {
+	position: relative;
+}
+
+.background_fon{
+	width: 100%;
+	height: 100vh;
+	position: fixed;
+    opacity: 0.5;
+    background-color: #000;
+	transition: background-color 3s;
+}
+
+.background_fon_white{
+	width: 100%;
+	position: fixed;
+	height: 100vh;
+	z-index: 5;
+	top: 0;
+}
+
+.textAlign {
+	text-align: center;
+}
+$c1: #581c1c;
+$c2: #fdf7e7;//#3E8CE1;
+$c3: #fff;
+
+
+
+.open-menu {
+	opacity: 1;
+	display: block;
+	transform: scale(1);
+}
+
+.close-menu {
+	display: none;
+	opacity: 0;
+	transform: scale(0.8);
+}
+
+.bgAnimation {
+	@apply transition-colors duration-500
+}
+
+.myBg {
+	@apply transition-colors duration-500 dark:bg-secondary bg-white
+}
+.bgHover {
+	@apply hover:bg-primary/5 hover:dark:bg-white/5
+}
+
+.myText {
+	@apply text-secondary dark:text-white
+}

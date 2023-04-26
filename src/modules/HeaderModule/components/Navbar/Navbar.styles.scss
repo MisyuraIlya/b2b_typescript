@@ -1,0 +1,59 @@
+.Navbar{
+    position: relative;
+    width: 100%;
+    direction: rtl;
+    // background-color: white;
+    @apply bg-secondary;
+    .list{
+        width: 100%;
+        overflow: auto;
+        ul {
+            margin: 0;
+            
+            display: flex;
+            align-items: center;
+            position: relative;
+            justify-content: center;
+            list-style-type: none;
+            li{
+                padding: 0 16px 0 16px;
+            }
+        }
+    }
+
+    .modal{
+        display: flex;
+        position: absolute;
+        top: 100%;
+        background: #fff;
+        right: 0;
+        left: 0;
+        box-shadow: 2px 2px 8px rgba(0,0,0,.2);
+        max-height: 80vh;
+        overflow-y: auto;
+        ul {
+            list-style-type: none;
+            display: flex;
+            li{
+                display: flex;
+                min-width: 200px;
+                max-width: 200px;
+                justify-content: center;
+                align-items: center;
+                .img_cont{
+                    img {
+                        width: 80%;
+                    }
+                }
+                .title_cont{
+                    p{
+                        padding: 0;
+                        margin: 0;
+                    }
+                }
+                padding: 0 16px 0 16px;
+            }
+        }
+    }
+
+}

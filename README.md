@@ -140,3 +140,4 @@
 21. npm install -S react-useanimations
 22. npm i react-loader-spinner
 23. npm i --save react-select
+24. npm i react-calendar

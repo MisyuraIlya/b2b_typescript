@@ -1,0 +1,22 @@
+.SliderCategory{
+    .card{
+        .img_cont{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            img{
+                width: 95%;
+            }
+        }
+
+        .title{
+            padding: 1px;
+            h4{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+        }
+
+    }
+}

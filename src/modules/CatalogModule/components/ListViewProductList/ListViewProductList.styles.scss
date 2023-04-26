@@ -1,0 +1,19 @@
+@import '../../../../App.scss';
+.ListViewProductList{
+    .head{
+        border-bottom: 3px solid black;
+    }
+    .odd{
+        background: #f3f5f9;
+    }
+    .double{
+        background: white;
+    }
+
+    .card {
+        display: flex;
+        img {
+            width: 80%;
+        }
+    }
+}

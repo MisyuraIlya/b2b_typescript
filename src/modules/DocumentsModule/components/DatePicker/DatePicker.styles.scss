@@ -1,0 +1,36 @@
+.DatePicker{
+    direction: rtl;
+    .calendar_btn{
+        display: flex;
+        .block{
+            p{
+                padding: 0 10px;
+            }
+            .calendar_card{
+                max-width: 150px;
+                padding: 5px 8px;
+                border: 1px solid #f0f3ff;
+                border-radius: 4px;
+                cursor: pointer;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                span{
+                    padding: 0 10px 0 10px;
+                }
+            }
+        }
+    }
+
+    .static_dates{
+        display: flex;
+        .date_rande{
+            padding: 0 0 0 30px;
+            p{
+                cursor: pointer;
+            }
+        }
+    }
+
+
+}

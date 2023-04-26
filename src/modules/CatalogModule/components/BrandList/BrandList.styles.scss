@@ -1,0 +1,10 @@
+.BrandList{
+    direction: rtl;
+    margin-top: 20px;
+    .brand{
+        display: flex;
+        justify-content: right;
+        align-items: center;
+        padding: 10px 10px 10px 10px;
+    }
+}
