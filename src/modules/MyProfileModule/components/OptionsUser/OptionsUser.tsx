@@ -1,43 +1,25 @@
 import React from 'react';
 import './OptionsUser.styles.scss';
 import { MdShoppingCart, MdShoppingBag, MdOutlineChecklist } from "react-icons/md";
+import { Card } from '../../constructor';
 
 const OptionsUser = () => {
     return (
-        <div className='OptionsUser'>
-            <div className='flex-container'>
-                <div className='col-lg-4'>
-                    <div className='crad'>
-                        <div className='title'>
-                            <h4>סל קבוע</h4>
-                        </div>
-                        <div className='image'>
-                            <MdShoppingCart size={25}/>
-                        </div>
-                    </div>
-                </div>
-                <div className='col-lg-4'>
-                    <div className='crad'>
-                        <div className='title'>
-                            <h4>המסמכים שלי</h4>
-                        </div>
-                        <div className='image'>
-                            <MdShoppingBag size={25}/>
-                        </div>
-                    </div>
-                </div>
-                <div className='col-lg-4'>
-                    <div className='crad'>
-                        <div className='title'>
-                            <h4>חדש באתר</h4>
-                        </div>
-                        <div className='image'>
-                            <MdOutlineChecklist size={25}/>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div className='grid grid-cols-3 gap-24'>
+            <Card className='bg-white rounded-md myCenter py-6 flex'>
+                <MdShoppingCart size={25}/>
+                סל קבוע
+            </Card>
+            <Card className='bg-white rounded-md myCenter py-6 flex'>
+                <MdShoppingBag size={25}/>
+                הזמנות שלי
+            </Card>
+            <Card className='bg-white rounded-md myCenter py-6 flex'>
+                <MdOutlineChecklist size={25}/>
+                רשימת קניות
+            </Card>
         </div>
+
     );
 };
 

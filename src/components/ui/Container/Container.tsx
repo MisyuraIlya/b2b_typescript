@@ -6,7 +6,7 @@ export interface ContainerProps {
 
 const Container: FC<ContainerProps> = ({ children }) => {
     return (
-        <div className='Container'>
+        <div className='container mx-auto px-64 py-12'>
             {children}
         </div>
     );

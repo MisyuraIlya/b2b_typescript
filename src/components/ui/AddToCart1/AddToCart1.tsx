@@ -15,7 +15,7 @@ const AddToCart1: FC<AddToCart1Props> = ({item, handleAddItem, handleIncreaseQua
     return (
         <div className='AddToCart1'>
             { !(Boolean(getCartItem(item.id))) ?       
-                <div className='notActive' onClick={() => handleAddItem(item)}>
+                <div className='notActive border border-black dark:border-white' onClick={() => handleAddItem(item)}>
                     <span>הוספה לסל</span>
                 </div>
              : 
@@ -28,7 +28,7 @@ const AddToCart1: FC<AddToCart1Props> = ({item, handleAddItem, handleIncreaseQua
                         </div>    
                         <div className='col-lg-4'>
                             <div className='value'>
-                                <input type="number" value={getCartItem(item.id)?.quantity} onChange={(e) => onEdit(parseInt(e.target.value))}  />
+                                <input className='text-black' type="number" value={getCartItem(item.id)?.quantity} onChange={(e) => onEdit(parseInt(e.target.value))}  />
                             </div>    
                         </div>   
                         <div className='col-lg-4'>

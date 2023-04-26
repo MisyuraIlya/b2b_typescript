@@ -27,7 +27,7 @@ const AddToCart2: FC<AddToCart2Props> = ({item, handleAddItem, handleIncreaseQua
                         </div>    
                         <div className='col-lg-4'>
                             <div className='value'>
-                            <input type="number" value={getCartItem(item.id)?.quantity} onChange={(e) => onEdit(parseInt(e.target.value))}  />
+                            <input type="number" className='text-black' value={getCartItem(item.id)?.quantity} onChange={(e) => onEdit(parseInt(e.target.value))}  />
                             </div>    
                         </div>   
                         <div className='col-lg-4'>

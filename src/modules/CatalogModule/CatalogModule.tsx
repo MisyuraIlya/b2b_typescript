@@ -11,21 +11,19 @@ const CatalogModule = () => {
 
     return (
             <CatalogProvider>
-                <Container>
-                    <div className='CatalogModule'>
-                        <div className='flex-container'>
-                            <div className='col-lg-3'>
-                                <CategoryList/>
-                                <BrandList/>
-                            </div>
-                            <div className='col-lg-9'>
-                                <HeadOptions/>
-                                <ListViewProductList/>
-                                <GroupViewProductList/>
-                            </div>
+                <div className='CatalogModule container mx-auto px-4'>
+                    <div className='flex-container'>
+                        <div className='col-lg-3'>
+                            <CategoryList/>
+                            <BrandList/>
+                        </div>
+                        <div className='col-lg-9'>
+                            <HeadOptions/>
+                            <ListViewProductList/>
+                            <GroupViewProductList/>
                         </div>
                     </div>
-                </Container>
+                </div>
             </CatalogProvider>
     );
 };

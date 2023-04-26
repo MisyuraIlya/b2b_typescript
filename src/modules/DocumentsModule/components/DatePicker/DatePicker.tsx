@@ -7,21 +7,21 @@ const DatePicker = () => {
     const [toDate, setToDate] = useState(new Date())
     return (
         <div className='DatePicker'>
-            <div className='calendar_btn'>
+            <div className='calendar_btn gap-4'>
                 <MyCalendar date={fromDate} onChangeDate={setFronDate}/>
                 <MyCalendar date={toDate} onChangeDate={setToDate}/>
             </div>
-            <div className='static_dates'>
-                <div className='date_rande'>
+            <div className='static_dates py-4'>
+                <div className='date_rande cursor-pointer '>
                     <p>חודש</p>
                 </div>
-                <div className='date_rande'>
+                <div className='date_rande cursor-pointer'>
                     <p>רבעון</p>
                 </div>
-                <div className='date_rande'>
+                <div className='date_rande cursor-pointer'>
                     <p>חצי שנה</p>
                 </div>
-                <div className='date_rande'>
+                <div className='date_rande cursor-pointer'>
                     <p>שנה</p>
                 </div>
             </div>

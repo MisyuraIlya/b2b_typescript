@@ -2,6 +2,7 @@ import React from 'react';
 import './DocumentList.styles.scss';
 import moment from 'moment-timezone'
 import { Button2 } from '../../constructor';
+import {Button} from '../../constructor';
 const mockData = [
     {id:1, order:'1', date: new Date(), asmahta:'123', mehir:'123', maam:'123', total:'123', type:'123'},
     {id:2, order:'1', date: new Date(), asmahta:'123', mehir:'123', maam:'123', total:'123', type:'123'},
@@ -14,65 +15,29 @@ const mockDataSubProds = [
 ]
 const DocumentList = () => {
     return (
-        <div className='DocumentList'>
-            <div className='head'>
-                <div className='flex-container'>
-                    <div className='col-lg-1'>
-                        <p>#</p>
-                    </div>
-                    <div className='col-lg-2'>
-                        <p>תאריך ערך</p>
-                    </div>
-                    <div className='col-lg-1'>
-                        <p>אסמכתא</p>
-                    </div>
-                    <div className='col-lg-1'>
-                        <p>ה.מסחרית</p>
-                    </div>
-                    <div className='col-lg-1'>
-                        <p>מע״מ</p>
-                    </div>
-                    <div className='col-lg-1'>
-                        <p>לתשלום</p>
-                    </div>
-                    <div className='col-lg-1'>
-                        <p>סוג</p>
-                    </div>
-                </div>
+        <div className='DocumentList py-4'>
+            <div className='grid grid-rows-9 grid-flow-col gap-12 py-4'>
+                <p>#</p>
+                <p>תאריך ערך</p>
+                <p>אסמכתא</p>
+                <p>ה.מסחרית</p>
+                <p>מע״מ</p>
+                <p>לתשלום</p>
+                <p>סוג</p>
             </div>
             {mockData?.map((item,index) => {
                 return (
                     <>
-                    <div className='card_doc' key={index}>
-                        <div className='flex-container'>
-                            <div className='col-lg-1'>
-                                <p>{item.order}</p>
-                            </div>    
-                            <div className='col-lg-2'>
-                                <p>{moment(item.date).format('DD/MM/YYYY')}</p>
-                            </div>  
-                            <div className='col-lg-1'>
-                                <p>{item.asmahta}</p>
-                            </div>  
-                            <div className='col-lg-1'>
-                                <p>{item.mehir}</p>
-                            </div>  
-                            <div className='col-lg-1'>
-                                <p>{item.maam}</p>
-                            </div>  
-                            <div className='col-lg-1'>
-                                <p>{item.type}</p>
-                            </div>  
-                            <div className='col-lg-1'>
-                                <p>{item.total}</p>
-                            </div>  
-                            <div className='col-lg-2'>
-                                    <Button2 Primary={false}>הוסף לסל</Button2>
-                            </div> 
-                            <div className='col-lg-2'>
-                                <Button2 Primary={false}>הוסף לטיוטה</Button2>
-                            </div>    
-                        </div>    
+                    <div className='grid grid-rows-9 grid-flow-col gap-12 mt-4 py-4 rounded-md px-4 text-center items-center cursor-pointer bg-secondary text-white' key={index}>
+                            <p>{item.order}</p>
+                            <p>{moment(item.date).format('DD/MM/YYYY')}</p>
+                            <p>{item.asmahta}</p>
+                            <p>{item.mehir}</p>
+                            <p>{item.maam}</p>
+                            <p>{item.type}</p>
+                            <p>{item.total}</p>
+                            <Button variant='dark' className='rounded-lg'>הוסף לסל</Button>
+                            <Button variant='dark' className='rounded-lg'>הוסף לטיוטה</Button>
                     </div>  
                     <div className='sub_head'>
                         <div className='flex-container'>
@@ -98,7 +63,7 @@ const DocumentList = () => {
                     </div>
                     {mockDataSubProds?.map((prod, key) => {
                         return (
-                            <div className='card_prod' key={key}>
+                            <div className='card_prod py-4' key={key}>
                                 <div className='flex-container'>
                                     <div className='col-lg-2'>
                                         <p>{prod.sku}</p>
@@ -113,10 +78,10 @@ const DocumentList = () => {
                                         <p>{prod.total}</p>
                                     </div>
                                     <div className='col-lg-2'>
-                                        <Button2 Primary={false}>הוסף</Button2>
+                                        <Button variant='dark' className='rounded-lg '>הוסף לסל</Button>
                                     </div>
                                     <div className='col-lg-2'>
-
+                                        <Button variant='dark' className='rounded-lg'>הוסף לטיוטה</Button>
                                     </div>
                                 </div>
                             </div>

@@ -8,7 +8,7 @@ body{
 	padding: 0;
 	font-family: 'Assistant', sans-serif;
 	direction: rtl;
-	@apply text-base text-black bg-bg-color
+	@apply text-base text-black bg-bg-color dark:text-white dark:bg-secondary
 	
 
 }
@@ -98,4 +98,12 @@ $c3: #fff;
 
 .myText {
 	@apply text-secondary dark:text-white
+}
+
+.myBorder {
+	@apply  border-secondary dark:border-white 
+}
+
+.myCenter {
+	@apply text-center justify-center items-center
 }

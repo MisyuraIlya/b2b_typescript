@@ -106,9 +106,6 @@ const CategoryList: FC = () => {
                 }
             </span>
         </div>
-        <div className='header_category'>
-            <h4>סינון מוצרים</h4>
-        </div>
         <div className='CategoryList'>
             {categoriesData?.map((item,index) => 
             <div key={index}>

@@ -5,11 +5,12 @@ import DocumentTypes from './components/DocumentTypes/DocumentTypes';
 import SearchBar from './components/SearchBar/SearchBar';
 import { Container } from './constructor';
 import './DocumentsModule.styles.scss'
+import {Heading} from './constructor';
 const DocumentsModule = () => {
     return (
         <div className='DocumentsModule'>
             <Container>
-                <h2>מסמכים שלי</h2>
+                <Heading>מסמכים שלי</Heading>
                 <DatePicker/>
                 <DocumentTypes/>
                 <SearchBar/>

@@ -24,7 +24,7 @@ const RouterApp = () => {
             <Link to="/login" data-testid="cart-link">Login</Link>
             <Link to="/registration" data-testid="post-link">Registration</Link>
             <Link to="/catalog" data-testid="post-link">Catalog</Link> */}
-            <main>
+            <main style={{paddingTop:'130px'}}>
                 <Routes>
                     <Route>
                         <Route path="/" element={<HomePage/>} />

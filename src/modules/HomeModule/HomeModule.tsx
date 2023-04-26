@@ -15,7 +15,7 @@ import { useActions } from '../AuthModule/constructor';
 const HomeModule = () => {
 
     return (
-        <div>
+        <div className='myBg'>
             {/* <div className='HomeModule'> */}
                 <Hero/>
                 {/* <HeroSlider/> */}

@@ -6,6 +6,8 @@ import { useCart } from '../../constructor';
 import {RiShoppingCartLine} from 'react-icons/ri'
 import CartItem from '../CartItem/CartItem';
 import './HeaderCart.styles.scss'
+import {MdShoppingCartCheckout} from 'react-icons/md'
+import {FaFileInvoiceDollar} from 'react-icons/fa'
 const HeaderCart = () => {
 
     const {isShow, setIsShow, ref} = useOutside(false)
@@ -29,12 +31,6 @@ const HeaderCart = () => {
                     סל קניות שלי
                 </div>
                 <div>
-                    {/* {items.length ? (
-                        items.map(item => <CartItem item={item} ley={item.id}/>)
-                        ) : (
-                            <div className='font-light'>cart is empty!</div>
-                        )
-                    )} */}
                     {items.length > 0 
                     ? items.map(item => <CartItem item={item} key={item.id}/>)
                     : <div className='font-light'>cart is empty!</div>
@@ -47,13 +43,19 @@ const HeaderCart = () => {
                 </div>
                 <div className='flex text-center'>
                     <div className='py-2 px-2'>
-                        <Button variant='light' className='btn-link mt-5 mb-2 rounded-lg bg-secondary'>
+                        <Button variant='dark' className='relative flex justify-center items-center btn-link mt-5 mb-2 rounded-lg'>
                             לסיכום
+                            <div className='absolute left-4'>
+                                <FaFileInvoiceDollar/>
+                            </div>
                         </Button>
                     </div> 
                     <div className='py-2 px-2'>
-                        <Button variant='light' className='btn-link mt-5 mb-2 rounded-lg'>
+                        <Button variant='dark' className='relative flex justify-center items-center btn-link mt-5 mb-2 rounded-lg'>
                             לתשלום
+                            <div className='absolute left-4'>
+                                <MdShoppingCartCheckout/>
+                            </div>
                         </Button>
                     </div>    
                 </div>    

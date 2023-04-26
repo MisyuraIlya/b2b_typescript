@@ -4,7 +4,7 @@ import { ICart } from '@/models/cart.interface';
 const CartItem: FC<{item: ICart}> = ({item}) => {
     return (
         <>
-            <div className='flex py-2'>
+            <div className='flex py-4 rounded-md'>
                     <img src={item.product.image}  className='w-6/12 px-4'/>
                 <div>
                     <div>{item.product.name}</div>

@@ -22,15 +22,22 @@
     }
 
     .modal{
-        display: flex;
-        position: absolute;
+
+
         top: 100%;
-        background: #fff;
         right: 0;
         left: 0;
-        box-shadow: 2px 2px 8px rgba(0,0,0,.2);
+        box-shadow: 2px 2px 8px rgba(0,0,0,30);
         max-height: 80vh;
         overflow-y: auto;
+        display: flex;
+        justify-content: center;
+        .container{
+            box-shadow: 2px 2px 8px rgba(0,0,0,56);
+            width: 80%;
+            display: flex;
+            position: absolute;
+        }
         ul {
             list-style-type: none;
             display: flex;

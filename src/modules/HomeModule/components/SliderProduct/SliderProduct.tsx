@@ -6,11 +6,11 @@ import 'swiper/css';
 import {Modal,PopUpCard,defaultProduct,AddToCart} from '../../constructor';
 interface SliderProductProps {
     slides: number;
-    data?: Array<IProduct>
+    data?: IProduct[]
 }
 
 const SliderProduct: FC<SliderProductProps> = ({slides, data}) => {
-
+    console.log('data',data)
     const [choosedProduct, setChoosedProduct] = useState<IProduct>(defaultProduct);
     const [openModal, setOpenModal] = useState(false)
     const handleClose = () => {
@@ -37,7 +37,7 @@ const SliderProduct: FC<SliderProductProps> = ({slides, data}) => {
         >
             {data?.map((item,index) => 
                 <SwiperSlide key={index}>
-                    <div className='card'>
+                    <div className='card myBg myText shadow-md5'>
                         <div onClick={() => handleOpenModal(item)}>
                             <div className='img_cont'>
                                 <img src={item.image} alt="slider" />
@@ -47,7 +47,7 @@ const SliderProduct: FC<SliderProductProps> = ({slides, data}) => {
                             <p>{item.packQuant} יח במארז</p>
                             <p>{item.sku} מק״ט</p>
                         </div>
-                        {/* <AddToCart item={item} type={1}/> */}
+                        <AddToCart product={item} type={1}/>
                     </div>
                 </SwiperSlide>
             )}

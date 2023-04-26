@@ -20,7 +20,7 @@ const MyMyCalendar: FC<MyCalendar> = ({date,onChangeDate}) => {
     }
     return (
         <>
-        <div className='MyCalendar'>
+        <div className='MyCalendar border border-secondary'>
             <div className='MyCalendar_card' onClick={() => setActive(!active)}>
                 <span>{moment(value).format('DD/MM/YYYY')}</span>
                 <MdCalendarMonth size={24}/>

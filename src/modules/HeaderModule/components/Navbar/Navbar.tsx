@@ -37,7 +37,7 @@ const Navbar = () => {
 
     return (
         <div onMouseLeave={handleMouseLeave}>
-            <div className='Navbar' >
+            <div className='Navbar'>
                 <div className='list'>
                     <ul>
                         {data?.map((item,index) =>
@@ -49,20 +49,22 @@ const Navbar = () => {
                 </div>
                 {isMouseOn &&
                 <div className='modal' style={{zIndex:Z_INDEX.NAVBAR}} >
-                    <ul>
-                        {modalItem?.children?.map((item,index) => 
-                            <li key={index} className="pointer" onClick={() => handleOpenLvl3(item.id)} >
-                                <div>
-                                    <div className='img_cont center p-4'>
-                                        <img src={item.image} alt="" />
+                    <div className='container myBg'>
+                        <ul>
+                            {modalItem?.children?.map((item,index) => 
+                                <li key={index} className="pointer" onClick={() => handleOpenLvl3(item.id)} >
+                                    <div>
+                                        <div className='img_cont center p-4'>
+                                            <img src={item.image} alt="" />
+                                        </div>
+                                        <div className='title_cont center'>
+                                            <p className='text-secondary dark:text-white'>{item.name}</p>
+                                        </div>
                                     </div>
-                                    <div className='title_cont center'>
-                                        <p className='text-secondary'>{item.name}</p>
-                                    </div>
-                                </div>
-                            </li>
-                        )}
-                    </ul>
+                                </li>
+                            )}
+                        </ul>
+                    </div>    
                 </div>
                 }  
             </div>

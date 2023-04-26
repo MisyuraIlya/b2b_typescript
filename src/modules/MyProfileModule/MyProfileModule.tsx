@@ -3,19 +3,20 @@ import { Container } from './constructor';
 import './MyProfileModule.styles.scss'
 import InfoUser from './components/InfoUser/InfoUser';
 import OptionsUser from './components/OptionsUser/OptionsUser';
+import {Card} from './constructor';
+import {Heading} from './constructor';
+
 const MyProfileModule = () => {
     return (
-        <div className='MyProfile'>
-            <Container>
-                <h4>אזור אישי</h4>
-                <div style={{marginTop:'30px'}}>
-                    <InfoUser/>
-                </div>
-                <div style={{marginTop:'50px'}}>
-                    <OptionsUser/>
-                </div>
-            </Container>
-        </div>
+        <Container>
+            <Heading>פרופיל אישי</Heading>
+            <div className='py-6'>
+                <InfoUser/>
+            </div>
+            <div className='py-6'>
+                <OptionsUser/>
+            </div>
+        </Container>
     );
 };
 
