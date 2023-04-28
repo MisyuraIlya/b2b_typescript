@@ -8,11 +8,12 @@ import CartItem from '../CartItem/CartItem';
 import './HeaderCart.styles.scss'
 import {MdShoppingCartCheckout} from 'react-icons/md'
 import {FaFileInvoiceDollar} from 'react-icons/fa'
+import { useNavigate } from 'react-router-dom';
 const HeaderCart = () => {
 
     const {isShow, setIsShow, ref} = useOutside(false)
     const {items, total} = useCart()
-    
+    const navigate = useNavigate()
     return (
         <div className='HeaderCart relative' ref={ref}>
             <SquareButton
@@ -43,7 +44,7 @@ const HeaderCart = () => {
                 </div>
                 <div className='flex text-center'>
                     <div className='py-2 px-2'>
-                        <Button variant='dark' className='relative flex justify-center items-center btn-link mt-5 mb-2 rounded-lg'>
+                        <Button variant='dark' className='relative flex justify-center items-center btn-link mt-5 mb-2 rounded-lg' onClick={() => navigate('/cart')}>
                             לסיכום
                             <div className='absolute left-4'>
                                 <FaFileInvoiceDollar/>

@@ -5,17 +5,20 @@ import UseAnimations from 'react-useanimations';
 import trash2 from 'react-useanimations/lib/trash2'
 import { useActions, useTypedSelector } from '../../constructor';
 import {IProduct, defaultProduct} from '../../constructor'
+import {PopUpCard,Modal} from '../../constructor';
+import {Heading} from '../../constructor';
+import {Button} from '../../constructor';
+
 const mockData = [
     {id:1, title:'productA', image:'https://havaya-b2b.co.il/src/img/products/9273.jpg', package:1,quantity:4, sku:'123', price:10, total:100},
     {id:2, title:'productB', image:'https://havaya-b2b.co.il/src/img/products/9273.jpg', package:1,quantity:4, sku:'123', price:10, total:100},
     {id:3, title:'productC', image:'https://havaya-b2b.co.il/src/img/products/9273.jpg', package:1,quantity:4, sku:'123', price:10, total:100},
     {id:4, title:'productD', image:'https://havaya-b2b.co.il/src/img/products/9273.jpg', package:1,quantity:4, sku:'123', price:10, total:100},
 ]
-import {PopUpCard,Modal} from '../../constructor';
 const CartList = () => {
 
     const {cart} = useTypedSelector(state => state)
-    // const {removeItem} = useActions()
+    const {removeItem} = useActions()
     const [choosedProduct, setChoosedProduct] = useState<IProduct>(defaultProduct);
     const [openModal, setOpenModal] = useState(false)
     const handleClose = () => {
@@ -31,17 +34,14 @@ const CartList = () => {
         <div className='CartList'>
             <div className='cart_head'>
                 <div className='title'>
-                    <h4>סיכום הזמנה</h4>
+                    <Heading>סיכום הזמנה</Heading>
                 </div>
-                <h1 className="text-1xl font-bold">
-      Hello world!
-    </h1>
                 <div className='options'>
                     <div className='btn'>
-                        <Button2 Primary={false}>שמור טיוטה</Button2>
+                        <Button variant='dark' className='rounded-lg'>שמור טיוטה</Button>
                     </div>
                     <div className='btn'>
-                        <Button2 Primary={false}>טען טיוטה</Button2>
+                        <Button variant='dark' className='rounded-lg'>טען טיוטה</Button>
                     </div>
                 </div>
             </div>
@@ -72,12 +72,11 @@ const CartList = () => {
             </div>
             <div className='list'>
                 {cart.items?.map((item,index) => {
-                    console.log(item)
                     return(
                         <div className='item_card' key={index}>
                             <div className='flex-container content'>
                                 <div className='col-lg-1 trash'
-                                //  onClick={() => removeItem(item.product.id)}
+                                 onClick={() => removeItem(item.product.id)}
                                  >
                                 <UseAnimations 
                                     animation={trash2}
@@ -85,7 +84,7 @@ const CartList = () => {
                                     />   
                                 </div>    
                                 <div className='col-lg-2 center'>
-                                    {/* <AddToCart type={2} item={item.product}/> */}
+                                    <AddToCart type={2} product={item.product}/>
                                 </div>    
                                 <div className='col-lg-2'>
                                     <div className='img_block' onClick={() => handleOpenModal(item.product)}>

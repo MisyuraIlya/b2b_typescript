@@ -8,4 +8,6 @@ import type {IProduct} from '../../models/product.interface';
 import { defaultProduct } from '../../models/product.interface';
 import { useCart } from '@/hooks/useCart';
 import TextArea from '@/components/ui/TextArea/TextArea';
-export {Button2, AddToCart, useActions, useTypedSelector, Modal ,PopUpCard, IProduct, defaultProduct,useCart, TextArea}
+import Heading from '../../components/ui/Heading/Heading'
+import Button from '../../components/ui/Button/Button'
+export {Button2, AddToCart, useActions, useTypedSelector, Modal ,PopUpCard, IProduct, defaultProduct,useCart, TextArea, Heading, Button}

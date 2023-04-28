@@ -3,20 +3,24 @@ import { useCart } from '../../constructor';
 import './Invoice.styles.scss';
 import DeliverySelectBox from '../DeliverySelectBox/DeliverySelectBox';
 import {Button2} from '../../constructor';
+import {Button} from '../../constructor';
+import {Heading} from '../../constructor';
 const mockData = {total:190.50, discount:10, tax:30}
 const Invoice = () => {
     // const { total, tax, totalBeforeTax, totalBeforeDiscount, discount, totalAfterDiscount} = useCart()
+    const {total} = useCart()
     return (
         <div className='Invoice'>
-            {/* <h4>פרטי הזמנה</h4>
-
+            <div className='myCenter'>
+                <Heading>פרטי הזמנה</Heading>
+            </div>
             <div className='first_block'>
                 <div className='cont_block'>
                     <div className='title'>
                         <span>סה״כ לפני מע״מ</span>
                     </div>
                     <div className='price'>
-                        <span>₪{totalBeforeTax}</span>
+                        {/* <span>₪{totalBeforeTax}</span> */}
                     </div>
                 </div>
                 <div className='cont_block'>
@@ -24,7 +28,7 @@ const Invoice = () => {
                         <span>הנחה כללית: </span>
                     </div>
                     <div className='price'>
-                        <span>%{discount}</span>
+                        {/* <span>%{discount}</span> */}
                     </div>
                 </div>
             </div>
@@ -34,7 +38,7 @@ const Invoice = () => {
                         <span>סה״כ לפני הנחה</span>
                     </div>
                     <div className='price'>
-                        <span>₪{totalBeforeDiscount}</span>
+                        {/* <span>₪{totalBeforeDiscount}</span> */}
                     </div>
                 </div>
                 <div className='cont_block'>
@@ -42,7 +46,7 @@ const Invoice = () => {
                         <span>סה״כ אחרי הנחה</span>
                     </div>
                     <div className='price'>
-                        <span>₪{totalAfterDiscount}</span>
+                        {/* <span>₪{totalAfterDiscount}</span> */}
                     </div>
                 </div>
                 <div className='cont_block'>
@@ -50,7 +54,7 @@ const Invoice = () => {
                         <span>מע״מ </span>
                     </div>
                     <div className='price'>
-                        <span>{tax}</span>
+                        {/* <span>{tax}</span> */}
                     </div>
                 </div>
             </div>
@@ -76,8 +80,8 @@ const Invoice = () => {
             </div>
             <DeliverySelectBox/>
             <div className='center'>
-                <Button2 Primary={false}>Send</Button2>
-            </div> */}
+                <Button variant='dark'>לתשלום</Button>
+            </div>
         </div>
     );
 };
