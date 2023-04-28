@@ -8,12 +8,12 @@ import { useQuery } from '@tanstack/react-query';
 const SliderContainer = () => {
     // const {HomeMethods,products,categoriesData} = useHome()
     const {data: categoryData}= useQuery(['category'], () => CategoryService.getAll())
-    const {data: productData}= useQuery(['products'], () => ProductService.getAll())
-    console.log('productData',productData)
+    // const {data: productData}= useQuery(['products'], () => ProductService.getByCategory(1,1,1))
+    // console.log('productData',productData)
     return (
         <div>
             <SliderCategory slides={4} data={categoryData}/>
-            <SliderProduct slides={4} data={productData}/> 
+            {/* <SliderProduct slides={4} data={productData}/>  */}
         </div>
     );
 };

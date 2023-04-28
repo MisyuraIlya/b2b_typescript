@@ -1,39 +1,24 @@
 // Global
 import React, { createContext, useState, useContext, ReactNode, useEffect } from 'react';
-import axios from 'axios';
-import { API_BACKEND } from '../constructor';
-import { onSuccessAlert } from '../constructor';
-import { useQuery  } from '@tanstack/react-query';
-import { ICategory } from '../constructor';
 import { IProduct } from '../constructor';
-import { useDebounce } from 'use-debounce';
-
-interface selectedIds {
-  lvl1: number | null,
-  lvl2: number | null,
-  lvl3: number | null
-}
+import { useParams } from 'react-router-dom';
 interface CatalogContextType {
   CatalogMethods: {
-    fetchAllProducts: (selectedIds: selectedIds, totalPageSize: number, pageNumber: number ) => void,
-    setTotalSize: (size: number) => void,
-    changePage: (page: number) => void,
-    setSearchValue: (value: string) => void,
-    setView: (view: boolean) => void
+    setView : (value: boolean) => void,
+    setPage : (value: number) => void,
+    setTotalSize : (value: number) => void,
+    setSearchValue : (value: string) => void,
+    setTotalItems: (value: number) => void,
+    filterProducts: (prodcuts: IProduct[]) => void,
   };
-  categoriesLoading: boolean;
-  categoriesData: ICategory[];
-  // productsData: IProduct[];
-  products: IProduct[];
-  filteredData: IProduct[];
-  totalSize: number;
-  categoryIds: selectedIds;
-  loading: boolean,
-  page: number,
-  totalPages: number,
-  searchValue: string,
-  totalItems: number,
+
   view: boolean
+  page: number
+  totalSize: number
+  searchValue: string
+  filteredData: IProduct[]
+  totalItems: number
+  
 }
 
 const CatalogContext = createContext<CatalogContextType | null>(null);
@@ -51,79 +36,21 @@ interface CatalogProviderProps {
     children: ReactNode;
 };
 
-interface IFetchAllCategoriesResponse {
-    data: ICategory[];
-  }
+
   
 const CatalogProvider: React.FC<CatalogProviderProps> = (props) => {
   // state
-  const [loading, setLoading] = useState(false);
-  const [allowRegister, setAllowRegister] = useState(false);
-  const [products, setProducts] = useState<IProduct[]>([])
-  const [totalSize, setTotalSize] = useState(10)
-  const [categoryIds, setCategoryIds] = useState<{lvl1: number | null, lvl2: number | null, lvl3: number | null}>({ lvl1: null, lvl2: null, lvl3: null });
-  const [page, setPage] = useState(1)
-  const [totalPages, setTotalPages] = useState(1)
-  const [totalItems, setTotalItems] = useState(0)
   const [view, setView] = useState(false)
+  const [page, setPage] = useState(1)
+  const [totalSize, setTotalSize] = useState(10)
   const [searchValue, setSearchValue] = useState('')
   const [filteredData, setFilteredData] = useState<IProduct[]>([])
+  const [totalItems, setTotalItems] = useState(0)
+  const {level1, level2, level3} = useParams()
   // Helpers
-  const { isLoading: isCategoriesLoading, error: categoriesError, data: categoriesData } = useQuery(
-  ['categories'],
-    () =>
-      fetch('https://digitrade.store/my_test/src/index.php', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          classPoint: 'CategoriesController',
-          funcName: 'FetchAllCategories',
-        }),
-      }).then((res) =>
-        res.json().then((data) => {
-          return data.data;
-        })
-      ),
-    {
-      useErrorBoundary: true,
-      cacheTime: 60 * 60 * 1000, // 1 hour
-      staleTime: 5 * 60 * 1000, // 5 minutes
-    }
-  );
-
-  // const { isLoading: isProductsLoading, error: productsError, data: productsData } = useQuery(
-  //   'products',
-  //   () =>
-  //     fetch('https://digitrade.store/my_test/src/index.php', {
-  //       method: 'POST',
-  //       headers: {
-  //         'Content-Type': 'application/json',
-  //       },
-  //       body: JSON.stringify({
-  //         classPoint: 'ProductsController',
-  //         funcName: 'FetchProducts',
-  //         val: val
-
-  //       }),
-  //     }).then((res) =>
-  //       res.json().then((data) => {
-  //         console.log(data)
-  //         return data.data;
-  //       })
-  //     ),
-  //   {
-  //     useErrorBoundary: true,
-  //     cacheTime: 60 * 60 * 1000, // 1 hour
-  //     staleTime: 5 * 60 * 1000, // 5 minutes
-  //   }
-  // );
-  
-
 
   // Exports
-  const filterProducts = () => {
+  const filterProducts = (products: IProduct[]) => {
     if(searchValue){
       const filteredMachines = products.filter(val =>
         val.name.includes(searchValue)
@@ -134,65 +61,26 @@ const CatalogProvider: React.FC<CatalogProviderProps> = (props) => {
     }
   }
 
-  const fetchAllProducts = async (selectedIds: selectedIds, totalPageSize: number = totalSize, pageNumber: number = page) => {
-    setCategoryIds(selectedIds)
-    setLoading(true)
-    let val = {
-      lvl1: selectedIds.lvl1,
-      lvl2: selectedIds.lvl2,
-      lvl3: selectedIds.lvl3,
-      pageSize: totalPageSize ? totalPageSize : totalSize,
-      page: pageNumber ? pageNumber : page
-    }
-    try {
-    const res = await axios.post(`${API_BACKEND}`, {
-      classPoint: 'ProductsController',
-      funcName: 'FetchProducts',
-      val: val
-    });
-    setProducts(res.data.data.data);
-    setTotalPages(res.data.data.totalPages)
-    setTotalItems(res.data.data.totalItems)
-    } catch(e) {
-      console.log(e)
-    } finally {
-      setLoading(false)
-    }
-
-  };
-
-  const changePage = (page: number) => {
-      setPage(page)
-      fetchAllProducts(categoryIds, totalSize, page)
-  }
-
   useEffect(() => {
-    filterProducts()
-  },[searchValue])
+    setPage(1)
+  },[level1, level2, level3])
 
   const CatalogMethods = {
-    fetchAllProducts,
+    setView,
+    setPage,
     setTotalSize,
-    changePage,
-    setTotalPages,
-    setSearchValue,
-    setView
+    setSearchValue, 
+    setTotalItems,
+    filterProducts
   };
   const value: CatalogContextType = {
     CatalogMethods,
-    categoriesLoading: isCategoriesLoading,
-    categoriesData,
-    // productsData,
-    products,
-    totalSize,
-    categoryIds,
-    loading,
+    view,
     page,
-    totalPages,
+    totalSize,
     searchValue,
     filteredData,
-    totalItems,
-    view
+    totalItems
   };
 
   return <CatalogContext.Provider value={value} {...props} />;

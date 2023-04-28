@@ -1,7 +1,13 @@
 import React, {FC, useState} from 'react';
 import { useCatalog } from '../../context/CatalogProvider';
-import { ICategory } from '../../constructor';
+import { SubHeading, ICategory } from '../../constructor';
 import './CategoryList.styles.scss';
+import { Sidebar, Menu, MenuItem, SubMenu } from 'react-pro-sidebar';
+import { useNavigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
+import { ProductService } from '@/services/product/product.service';
+import { useQuery } from '@tanstack/react-query';
+import { CategoryService } from '../../constructor';
 export interface mockCategorylvl1 {
     id: number
     name:string
@@ -20,123 +26,33 @@ export interface CategoryListProps{
     categories:mockCategorylvl1[]
 }
 
+
 const CategoryList: FC = () => {
-    const [breadcrumbs, setBreadcrumbs] = useState<{lvl1: string | null, lvl2: string | null, lvl3: string | null}>({lvl1: null, lvl2:null , lvl3:null })
-    const [activeLvl2, setActiveLvl2] = useState(0)
-    const [activeLvl3, setActiveLvl3] = useState(0)
-    const {CatalogMethods, categoriesData, totalSize, page} =useCatalog()
-    const [selectedIds, setSelectedIds] = useState<{lvl1: number | null, lvl2: number | null, lvl3: number | null}>({ lvl1: null, lvl2: null, lvl3: null });
 
-    const handleOpenLvl2 = (item: ICategory) => {
-        let selected = {
-            lvl1: item.id,
-            lvl2: null,
-            lvl3: null
-        }
-        let breadcrumbsName = {
-            lvl1: item.name,
-            lvl2: null,
-            lvl3: null
-        }
-        setSelectedIds(selected);
-        setBreadcrumbs(breadcrumbsName)
-        CatalogMethods.fetchAllProducts(selected,totalSize,page )
-        if(activeLvl2 === item.id) {
-            setActiveLvl2(0)
-        } else {
-            setActiveLvl2(item.id)
-        }
-        
-    }
+    const {data, isLoading}= useQuery(['category'], () => CategoryService.getAll())
+    const navigate = useNavigate()
+    const { level3 } = useParams();
 
-    const handleOpenLvl3 = (item: ICategory) => {
-        let selected = {
-            lvl1: selectedIds.lvl1,
-            lvl2: item.id,
-            lvl3: null
-        }
-        let breadcrumbsName = {
-            lvl1: breadcrumbs.lvl1,
-            lvl2: item.name,
-            lvl3: null
-        }
-        setSelectedIds(selected);
-        setBreadcrumbs(breadcrumbsName)
-        CatalogMethods.fetchAllProducts(selected,totalSize,page)
-        if(activeLvl3 === item.id) {
-            setActiveLvl2(0)
-        } else {
-            setActiveLvl3(item.id)
-        }
-    }
-
-    const handleOpenLvl3Cat = (item: ICategory) => {
-        let selected = {
-            lvl1: selectedIds.lvl1,
-            lvl2: selectedIds.lvl2,
-            lvl3: item.id
-        }
-        let breadcrumbsName = {
-            lvl1: breadcrumbs.lvl1,
-            lvl2: breadcrumbs.lvl2,
-            lvl3: item.name
-        }
-        setSelectedIds(selected);
-        setBreadcrumbs(breadcrumbsName)
-        CatalogMethods.fetchAllProducts(selected,totalSize,page)
-    }
 
     return (
-        <>
-        <div className='Breadcrumbs'>
-            <span>
-                בית/
-                {breadcrumbs.lvl1 && breadcrumbs.lvl2 ? 
-                    `${breadcrumbs.lvl1}/` :
-                    breadcrumbs.lvl1 &&
-                    <span style={{fontWeight: 'bold'}}>{breadcrumbs.lvl1}/</span>
-                }
-                {breadcrumbs.lvl2 &&
-                    <span style={{fontWeight: breadcrumbs.lvl3 ? 'normal' : 'bold'}}>
-                        {breadcrumbs.lvl2}
-                    </span>
-                }
-                {breadcrumbs.lvl3 && 
-                    <span style={{fontWeight: 'bold'}}>/{breadcrumbs.lvl3}</span>
-                }
-            </span>
-        </div>
-        <div className='CategoryList'>
-            {categoriesData?.map((item,index) => 
-            <div key={index}>
-                <div className='category_lvl1' key={index}>
-                    <span onClick={() => handleOpenLvl2(item)}>{item.name}</span>
-                </div>    
-                {item?.children?.map((lvl2,index2) =>
-                    <div key={index2}>
-                    {activeLvl2 === item.id &&
-                        <div className='category_lvl2' key={index2}>
-                            <span onClick={() => handleOpenLvl3(lvl2)}>{lvl2.name}</span>
-                        </div> 
-                    }
-                    {lvl2?.children?.map((lvl3,index3) =>
-                    <div key={index3}>
-                        {activeLvl3 === lvl2.id && activeLvl2 === item.id &&
-                            <div className='category_lvl3' key={index3}>
-                                <span onClick={() => handleOpenLvl3Cat(lvl3)}>{lvl3.name}</span>
-                            </div>
-                        }
-                    </div>
-
-                    )}  
-                    </div>
-                )}
+        <Sidebar rtl={true} className='bg-white rounded-lg'>
+            <div className='myCenter py-2'>
+                <SubHeading title='קטגוריות'/>
             </div>
-
-            )}
-        </div>
-        </>
- 
+            <Menu>
+                {data?.map((item,index) => 
+                    <SubMenu label={item.name} key={index} onClick={() => navigate(`/catalog/${item.id}/0/0`)}>
+                        {item?.children?.map((lvl2,index2) => 
+                            <SubMenu label={lvl2.name} key={index2} onClick={() => navigate(`/catalog/${item.id}/${lvl2.id}/0`)}>
+                                {lvl2?.children?.map((lvl3, index3) =>
+                                     <MenuItem className={`${level3 !== undefined && parseInt(level3) === lvl3.id ? 'text-primary' : 'text-secondary'}`} key={index3} onClick={() => navigate(`/catalog/${item.id}/${lvl2.id}/${lvl3.id}`)}>{lvl3.name}</MenuItem>
+                                )}
+                            </SubMenu>      
+                        )}
+                    </SubMenu>
+                )}
+            </Menu>
+        </Sidebar>
     );
 };
 

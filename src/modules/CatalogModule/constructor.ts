@@ -12,4 +12,8 @@ import Modal from '../../components/global/Modal/Modal';
 import PopUpCard from '../../components/global/PopUpCard/PopUpCard';
 import AddToCart from '../../components/global/AddToCart/AddToCart';
 import SearchInput from '../../components/ui/SearchInput/SearchInput';
-export {Container, SelectBox, Input, API_BACKEND, onSuccessAlert, APP_CONFIG, ICategory, IProduct, Pagination, Modal, PopUpCard,AddToCart, defaultProduct, SearchInput}
+import { SubHeading } from '../AuthModule/constructor';
+import { CategoryService } from '../HeaderModule/constructor';
+import { useCart } from '../HeaderModule/constructor';
+import { useActions } from '../../hooks/useActions'
+export {Container, SelectBox, Input, API_BACKEND, onSuccessAlert, APP_CONFIG, ICategory, IProduct, Pagination, Modal, PopUpCard,AddToCart, defaultProduct, SearchInput, SubHeading, CategoryService, useCart, useActions}

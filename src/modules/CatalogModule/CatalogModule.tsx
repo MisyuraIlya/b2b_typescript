@@ -6,14 +6,16 @@ import { CatalogProvider } from './context/CatalogProvider';
 import './CatalogModule.styles.scss';
 import ListViewProductList from './components/ListViewProductList/ListViewProductList';
 import GroupViewProductList from './components/GroupViewProductList/GroupViewProductList';
+import { ProSidebarProvider } from 'react-pro-sidebar';
 import { Container } from './constructor';
 const CatalogModule = () => {
 
     return (
+        <ProSidebarProvider>
             <CatalogProvider>
                 <div className='CatalogModule container mx-auto px-4'>
                     <div className='flex-container'>
-                        <div className='col-lg-3'>
+                        <div className='col-lg-3 py-12'>
                             <CategoryList/>
                             <BrandList/>
                         </div>
@@ -25,6 +27,7 @@ const CatalogModule = () => {
                     </div>
                 </div>
             </CatalogProvider>
+        </ProSidebarProvider>
     );
 };
 

@@ -12,11 +12,10 @@ const mockData = {id:1, total:'123'}
 
 
 const HeadOptions = () => {
-    const {CatalogMethods,totalSize, categoryIds, searchValue, totalItems, view, page} = useCatalog()
+    const {CatalogMethods, searchValue, totalItems, view, page} = useCatalog()
     
     const select = (id:string) => {
         CatalogMethods.setTotalSize(parseInt(id))
-        CatalogMethods.fetchAllProducts(categoryIds, parseInt(id), page)
     }
     const select2 = (id:string) => {
         console.log(id)

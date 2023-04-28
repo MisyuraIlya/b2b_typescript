@@ -1,13 +1,18 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './GroupViewProductList.styles.scss'
 import { useCatalog } from '../../context/CatalogProvider';
 import { TailSpin } from 'react-loader-spinner';
 import { IProduct, Pagination , defaultProduct} from '../../constructor';
 import {Modal, PopUpCard, AddToCart} from '../../constructor';
+import { useParams } from 'react-router-dom';
+import { useQuery } from '@tanstack/react-query';
+import { ProductService } from '@/services/product/product.service';
+import GroupCard from '../GroupCard/GroupCard';
 const GroupViewProductList = () => {
-    const {CatalogMethods, products,loading, page, totalPages, filteredData, view} = useCatalog()
+    const {CatalogMethods, page, totalSize, filteredData, view} = useCatalog()
     const [choosedProduct, setChoosedProduct] = useState<IProduct>(defaultProduct);
     const [openModal, setOpenModal] = useState(false)
+    
     const handleClose = () => {
         setOpenModal(false)
     }
@@ -15,13 +20,28 @@ const GroupViewProductList = () => {
         setOpenModal(true)
         setChoosedProduct(item)
     }
+    const { level1, level2, level3 } = useParams();
+
+    const {data, isLoading ,refetch}= useQuery(['products'], () => ProductService.getByCategory(level1,level2,level3,page,totalSize))
+
+    useEffect(() => {
+        refetch()
+        if(data){
+            CatalogMethods.setTotalItems(data?.totalItems)
+        }
+    },[level1, level2, level3, totalSize, page])
+
+    useEffect(() => {
+        if(filteredData && data) {
+            CatalogMethods.filterProducts(data?.data)
+        }
+    },[filteredData])
     return (
         <>
         {!view && 
-        
         <>
         <div className='GroupViewProductList'>
-            {loading ?
+            {isLoading ?
             <div className='loader_container'>
                <TailSpin
                 height="80"
@@ -35,41 +55,20 @@ const GroupViewProductList = () => {
                 />
             </div>    
             :
-                <div className='flex-container'>
-                    {(filteredData.length > 0 ? filteredData : products)?.map((item,index) => 
-                        <div className='col-lg-3'  key={index} >
-                            <div className='card' >
-                                <div className='card_content' onClick={() => handleOpenModal(item)}>
-                                    <div className='image_block'>
-                                        <img src={item.image} />
-                                    </div>    
-                                    <div className='card_content_info'>
-                                        <div className='title'>
-                                            <span>{item.name}</span>
-                                        </div>    
-                                        <div className='info'>
-                                            <span>מק״ט {item.sku}</span>
-                                        </div>    
-                                        <div className='price'>
-                                            <div className='last_price'>
-                                                {/* <span>{item.}₪</span> */}
-                                            </div>    
-                                            <div className='original_price'>
-                                            {/* <span>{item.discountPrice}₪</span> */}
-                                            </div>    
-                                        </div>    
-                                    </div>  
-                                </div>    
-                                <AddToCart product={item} type={1} />
-                            </div>
-                        </div>    
-                    )}
-                </div>
+            <>
+            <div className='grid grid-cols-4 gap-4 py-6'>
+                {(filteredData.length > 0 ? filteredData : data?.data)?.map((item,index) => 
+                    <div key={index}>
+                        <GroupCard item={item} handleOpenModal={handleOpenModal}/>
+                    </div>    
+                )}
+            </div>
+            </>
             }
 
         </div>
-        {!loading &&
-        <Pagination totalPages={totalPages} currentPage={page} onPageChange={CatalogMethods.changePage} />
+        {!isLoading && data &&
+            <Pagination totalPages={data?.totalPages} currentPage={page} onPageChange={CatalogMethods.setPage} />
         }
         <Modal isOpen={openModal} onClose={handleClose}>
             <PopUpCard data={choosedProduct}/>

@@ -80,3 +80,13 @@ interface ISearchType {
 export interface IProductSearchResponse extends IServerResponse {
   data: ISearchType
 }
+
+export interface IProductRespones extends IServerResponse {
+  data: {
+    data: IProduct[]
+    totalItems: number
+    totalPages: number
+  }
+
+
+}
