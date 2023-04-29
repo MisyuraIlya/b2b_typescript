@@ -4,6 +4,7 @@ import './Navbar.styles.scss';
 // import { useHeader } from '../../context/HeaderProvider';
 import { ICategory, Z_INDEX } from '../../constructor';
 import { CategoryService } from '../../constructor';
+import { useNavigate } from 'react-router-dom';
 interface selectedIds {
     lvl1: number | null,
     lvl2: number | null,
@@ -13,6 +14,7 @@ interface selectedIds {
 const Navbar = () => {
     const [isMouseOn, setIsMouseOn] = useState(true);
     const [modalItem, setModalItem] = useState<ICategory>()
+    const navigate = useNavigate()
     // const {data} = useHeader()
     const {data, isLoading}= useQuery(['category'], () => CategoryService.getAll())
 
@@ -29,10 +31,12 @@ const Navbar = () => {
 
     const handleOpenLvl2 = (id: number) => {
         setSelectedIds({ lvl1: id , lvl2: null, lvl3: null });
+        navigate(`catalog/${id}/0/0`)
     }
 
     const handleOpenLvl3 = (id: number) => {
         setSelectedIds({ ...selectedIds, lvl2: id, lvl3: null });
+        navigate(`catalog/${selectedIds.lvl1}/${id}/0`)
     }
 
     return (
