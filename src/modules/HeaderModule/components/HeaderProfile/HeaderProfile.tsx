@@ -38,11 +38,11 @@ const HeaderProfile: FC = () => {
                                 <p>פרופיל אישי</p>
                             </div>    
                         </div> 
-                        <div className='flex py-2 bgHover cursor-pointer myText' onClick={() => navigate('/documents')}>
+                        <div className='flex py-2 bgHover cursor-pointer myText' onClick={() => navigate('/documents/order')}>
                             <div className='items-center justify-center flex pl-4 pr-4'>
                                 <MdShoppingBag size={30}/>
                             </div>    
-                            <div className='items-center justify-center flex'>
+                            <div className='items-center justify-center flex' >
                                 <p>הזמנות שלי</p>
                             </div>    
                         </div> 

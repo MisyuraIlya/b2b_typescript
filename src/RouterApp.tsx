@@ -31,7 +31,7 @@ const RouterApp = () => {
                         <Route path='/auth' element={<AuthPage/>}/>
                         <Route path="/catalog/:level1/:level2/:level3" element={<CatalogPage/>}/>
                         <Route path='/profile' element={<ProfilePage/>}/>
-                        <Route path='/documents' element={<DocumentsPage/>}/>
+                        <Route path='/documents/:docs' element={<DocumentsPage/>}/>
                         <Route path='/cart' element={<CartPage/>}/>
                         {/* <Route path='/login' element={<LoginPage/>}/> */}
                         <Route path='/registration' element={<RegistrationPage/>}/>

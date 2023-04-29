@@ -10,7 +10,7 @@ const OptionsUser = () => {
                 <MdShoppingCart size={25}/>
                 סל קבוע
             </Card>
-            <Card className='bg-white rounded-md myCenter py-6 flex'>
+            <Card className='bg-white rounded-md myCenter py-6 flex' >
                 <MdShoppingBag size={25}/>
                 הזמנות שלי
             </Card>
