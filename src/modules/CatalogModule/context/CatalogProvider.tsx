@@ -42,7 +42,7 @@ const CatalogProvider: React.FC<CatalogProviderProps> = (props) => {
   // state
   const [view, setView] = useState(false)
   const [page, setPage] = useState(1)
-  const [totalSize, setTotalSize] = useState(10)
+  const [totalSize, setTotalSize] = useState(100)
   const [searchValue, setSearchValue] = useState('')
   const [filteredData, setFilteredData] = useState<IProduct[]>([])
   const [totalItems, setTotalItems] = useState(0)

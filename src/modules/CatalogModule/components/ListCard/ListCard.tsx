@@ -19,25 +19,25 @@ const ListCard:FC<ListCardProps> = ({index, item, handleOpenModal}) => {
         <div className='col-lg-12'>
             <div className={`card ${odd}`}>
                 <div className='col-lg-1'>
-                    <p>{item.category.name}</p>
+                    <p>{item.category?.name}</p>
                 </div>
                 <div className='col-lg-1' key={index} onClick={() => handleOpenModal(item)}>
-                    <img src={item.image} />
+                    <img src={item?.image} />
                 </div>
                 <div className='col-lg-3'>
-                    <p>{item.name}</p>
+                    <p>{item?.name}</p>
                 </div>
                 <div className='col-lg-1'>
                     <p></p>
                 </div>
                 <div className='col-lg-2'>
-                    <p>{item.barcode}</p>
+                    <p>{item?.barcode}</p>
                 </div>
                 <div className='col-lg-1'>
                     <p>מלאי</p>
                 </div>
                 <div className='col-lg-1'>
-                    <p>{item.price.price}</p>
+                    {/* <p>{item.price.price}</p> */}
                 </div>
                 <div className='col-lg-1'>
                     <div className='px-2'>
@@ -61,7 +61,7 @@ const ListCard:FC<ListCardProps> = ({index, item, handleOpenModal}) => {
                     </div>    
                 </div>
                 <div className='col-lg-1'>
-                    {(getCartItem(item.id)?.quantity ?? 0) * (getCartItem(item.id)?.product.price.price ?? 0)}
+                    {/* {(getCartItem(item.id)?.quantity ?? 0) * (getCartItem(item.id)?.product.price.price ?? 0)} */}
                 </div>
             </div>
         </div> 

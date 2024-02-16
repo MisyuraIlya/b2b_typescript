@@ -15,7 +15,7 @@ const PopUpCard: FC<PopUpCardProps> = ({data}) => {
                     </div>
                 </div>
                 <div className='col-lg-8'>
-                    <h1>{data.name}</h1>
+                    <h1>{data?.name}</h1>
                     <div className='flex-container'>
                         <div className='col-lg-3'>
                             <div>
@@ -33,16 +33,16 @@ const PopUpCard: FC<PopUpCardProps> = ({data}) => {
                         </div>
                         <div className='col-lg-9'>
                             <div>
-                                <p>{data.packQuant}</p>
+                                <p>{data?.packQuant}</p>
                             </div>
                             <div>
-                                <p>{data.sku}</p>
+                                <p>{data?.sku}</p>
                             </div>
                             <div>
-                                <p>{data.barcode}</p>
+                                <p>{data?.barcode}</p>
                             </div>
                             <div>
-                                <p>{data.category.name}</p>
+                                <p>{data?.category?.name}</p>
                             </div>
                         </div>
                     </div>  

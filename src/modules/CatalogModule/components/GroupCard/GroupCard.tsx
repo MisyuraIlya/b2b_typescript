@@ -9,15 +9,18 @@ const GroupCard: FC<GroupCardProps> = ({item, handleOpenModal}) => {
         <div className='bg-white rounded-lg hover:shadow-md'>
             <div className='cursor-pointer' onClick={() => handleOpenModal(item)}>
                 <div className='p-4'>
-                    <p className='text-secondary'>{item.name}</p>
-                    <p className='text-gray'>ברקוד: {item.barcode}</p>
+                    <p className='text-secondary'>{item?.name}</p>
+                    <p className='text-gray'>ברקוד: {item?.barcode}</p>
                 </div>
                 <div>
-                    <img src={item.image} />
+                <img
+                src={item.image ? item.image : 'https://churishop.co.il/src/img/placeholder.jpg'}
+                onError={(e) => (e.target as HTMLImageElement).src = 'https://churishop.co.il/src/img/placeholder.jpg'}
+                />
                 </div>
                 <div className='grid grid-cols-2'>
-                    <p className='text-right p-4'>יח: {item.packQuant}</p>
-                    <p className='text-left p-4'>מחיר: {item.price.price} ₪</p>
+                    <p className='text-right p-4'>יח: {item?.packQuant}</p>
+                    <p className='text-left p-4'>מחיר: {item?.price?.price} ₪</p>
                 </div>
             </div>
             <AddToCart product={item} type={1}/>
